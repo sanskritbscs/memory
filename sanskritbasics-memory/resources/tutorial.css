@@ -1,0 +1,99 @@
+.answer {
+  display: inline-block;
+  border: 1px solid rgb(178, 195, 255);
+  min-width: 30px;
+  margin: 2px 3px 2px 3px;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 5px;
+  background-color: rgba(0,0,0,0.7);
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.7);
+  overflow: hidden;
+}
+
+
+.easy { width: 11.5vh; height: 11.5vh; }
+.easy #answer_span1 { line-height: 12vh; font-size: 8vh; }
+.easy #answer_span1.smaller { line-height: 12vh; font-size: 5vh; }
+.easy #answer_span2 { font-size: 2vh; }
+
+.medium { width: 7.2vh; height: 7.2vh; }
+.medium #answer_span1 { line-height: 6vh; font-size: 5vh; }
+.medium #answer_span1.smaller { line-height: 6vh; font-size: 3.5vh; }
+.medium #answer_span2 { font-size: 2vh; }
+
+.hard { width: 7vh; height: 7vh; }
+.hard #answer_span1 { line-height: 7vh; font-size: 5vh; }
+.hard #answer_span1.smaller { line-height: 7vh; font-size: 3.5vh; }
+.hard #answer_span2 { font-size: 2vh; }
+
+.click:active {
+  box-shadow: none;
+  position: relative;
+  top: +1px;
+}
+
+#main {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  display: table;
+}
+
+.pressed {
+  box-shadow: none;
+  position: relative;
+  top: +1px;
+}
+
+.done { opacity: .5; cursor: none;   box-shadow: none; position: relative; top: +1px; }
+
+#answers { display: table-cell; vertical-align: middle; }
+
+.answer span { opacity: 0; }
+.pressed span,.done span { opacity: 1; }
+.not { font-size: 10px; color: yellow; text-align: right; }
+
+#congratulation
+{
+  top: 1%;
+  left: 2%;
+  position: absolute;
+  z-index: 5;
+  width: 96%;
+  height: 97%;
+  background-color: rgba(0, 0, 0, 0.9);
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  border: 1px solid rgb(178, 195, 255);
+  text-align: center;
+  animation: app 3.5s 1 ease-in;
+  display: none;
+}
+
+#LANG_CONGR { font-size: 8vh; line-height:  18vh; display: block; }
+#LANG_SCORE_TXT, #LANG_SCORE_NUM { font-size: 5vh; display: block; }
+#LANG_MENU, #LANG_AGAIN { margin: 20px; padding: 2vh; margin-top: 4vh; font-size: 4vh; line-height: 4vh; height: 4vh; width: auto; }
+
+@keyframes app {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+#moves_div
+{
+  width: 95%;
+  text-align: right;
+  position: absolute;
+  bottom: 2vh;
+  right: 2vh;
+  font-size: 2.7vh;
+}
+
+#scorelog { height: 44vh; }
+
+.today { color: red; }
+

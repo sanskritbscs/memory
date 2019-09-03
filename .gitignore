@@ -1,0 +1,12 @@
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+/app/build
+/app/app.iml
+app/release
+/files/Encryptor.class
+/app/src/main/res/raw/sanskritbasics.zip

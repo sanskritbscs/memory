@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ru-ru">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, target-densityDpi=device-dpi, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <link rel="stylesheet" type="text/css" href="resources/common.css">
+  <link rel="stylesheet" type="text/css" href="resources/tutorial.css">
+</head>
+<body id="page" ondragstart="return false;" ondrop="return false;">
+<div id="main">
+
+<script type="text/javascript" language="javascript" src="resources/locale.js"></script>
+<script type="text/javascript" language="javascript">
+
+var answers;
+var questions;
+var field_length=36;
+var moves=0;
+
+var annotate=localStorage.getItem('annotate');
+if (annotate=='true') { annotate=true; }
+  else { annotate=false; }
+
+var difficulty=localStorage.getItem('difficulty');
+
+switch (difficulty)
+{
+  case 'easy'   : field_length=16; break;
+  case 'medium' : field_length=36; break;
+  case 'hard'   : field_length=48; break;
+  default       : field_length=36; difficulty='medium';
+}
+
+var variant=localStorage.getItem('variant');
+switch (variant)
+{
+  case 'simple' : break;
+  case 'hard'   : break;
+  default       : variant='hard';
+}
+
+
+var score=localStorage.getItem('score');
+if (score) { score=JSON.parse(score); }
+  else { score={}; }
+if (!score[difficulty]) { score[difficulty]={}; }
+
+
+var task={};
+task['vowel']=[ "अ", "आ", "इ", "ई",  "उ", "ऊ",  "ऋ", "ॠ", "ऌ", "ए", "ऐ",  "ओ", "औ" ];
+task['consonant']=[ "क", "ख", "ग", "घ", "ङ", "च", "छ", "ज", "झ", "ञ", "ट", "ठ", "ड", "ढ", "ण", "त", "थ", "द", "ध", "न", "प", "फ", "ब", "भ", "म", "य", "र", "ल", "व", "श", "ष", "स", "ह" ];
+
+var ans={};
+ans['vowel']={};
+ans['consonant']={};
+
+ans['vowel']['ru']=[ "а", "аа", "и", "ии", "у",  "уу", "р",  "рр", "л", "е", "аи", "о",  "ау" ];
+ans['consonant']['ru']=[ "ка", "кха", "га", "гха", "нга", "ца", "ча", "джа", "джха", "нья", "тта",  "ттха", "дда", "ддха","нна", "та", "тха", "да", "дха", "на", "па", "пха", "ба", "бха", "ма", "я", "ра", "ла", "ва", "ша", "сса", "са", "ха" ];
+
+ans['vowel']['en']=[ "a", "aa", "i", "ii", "u",  "uu", "r",  "rr", "l", "e", "ai", "o",  "au" ];
+ans['consonant']['en']=[ "ka", "kha", "ga", "gha", "nga", "ca", "cha", "ja", "jha", "nya", "tta",  "ttha", "dda", "ddha","nna", "ta", "tha", "da", "dha", "na", "pa", "pha", "ba", "bha", "ma", "ya", "ra", "la", "va", "sha", "ssa", "sa", "ha" ];
+
+sanskr=task['vowel'].concat(task['consonant']);
+latin=ans['vowel'][lang].concat(ans['consonant'][lang]);
+field=[];
+field_shadow=[];
+m=[];
+
+var click=0;
+var first_element;
+var second_element;
+
+function quest_exists(val)
+{
+  for (var i=0; i<field_length; i++)
+  {
+    if ( val==field[i] ) { return true; }
+  }
+  return false;
+}
+
+function disable_element(e)
+{
+  e.onclick=null;
+  e.removeEventListener('touchstart', touchstart, false);
+  for (var a=0; a<el.childNodes.length; a++)
+  {
+    el.childNodes[a].removeEventListener('touchstart', touchstart, false);
+  }
+}
+
+function finished_buttons(e1,e2)
+{
+  e1.classList.add("done");
+  e2.classList.add("done");
+  e1.classList.remove("pressed");
+  e2.classList.remove("pressed");
+  e1.onclick=null;
+  e2.onclick=null;
+  disable_element(e1);
+  disable_element(e2);
+}
+
+function check_if_complete()
+{
+  var i=0;
+  while (i<field.length)
+  {
+    if (document.getElementById('answer'+i).classList.contains('done')==false) { return 0; }
+    i++;
+  }
+  return 1;
+}
+
+function answer(element)
+{
+  if (first_element==element || second_element==element) { return; }
+  if (element.classList.contains('done')) { return; }
+  var log='';
+  if (first_element!=null) { log='first element: '+first_element.id.slice(6); }
+  if (second_element!=null) { log+=' second element: '+second_element.id.slice(6); }
+  log+=' element: '+element.id.slice(6);
+  log+=' click: '+click;
+  switch (click)
+  {
+    case 0:
+      first_element=element;
+      second_element=null;
+      element.classList.add("pressed");
+      click=1;
+    break;
+    case 1:
+      if ( first_element==element ) { return; }
+      var prev_ans=first_element.id.slice(6);
+      var ans=element.id.slice(6);
+      if ( sanskr[field[prev_ans]] == sanskr[field[ans]] && first_element!=element )
+      {
+        finished_buttons(first_element,element);
+        click=0;
+      }
+      else
+      {
+        second_element=element;
+        element.classList.add("pressed");
+        click=2;
+      }
+    break;
+    case 2:
+      var first_ans=first_element.id.slice(6);
+      var second_ans=second_element.id.slice(6);
+      var ans=element.id.slice(6);
+      if ( sanskr[field[first_ans]] == sanskr[field[ans]] )
+      {
+        finished_buttons(element,first_element);
+        second_element.classList.remove("pressed");
+        click=0;
+        return;
+      }
+      if ( sanskr[field[second_ans]] == sanskr[field[ans]] )
+      {
+        finished_buttons(element,second_element);
+        first_element.classList.remove("pressed");
+        click=0;
+        return;
+      }
+      first_element.classList.remove("pressed");
+      second_element.classList.remove("pressed");
+      first_element=element;
+      second_element=null;
+      element.classList.add("pressed");
+      click=1;
+    break;
+  }
+  moves++;
+  display_value('moves', moves);
+  if (check_if_complete()) { congratulate(); }
+}
+
+function stackTrace() {
+    var err = new Error();
+    return err.stack;
+}
+
+function calculate_score()
+{
+  var tm=(new Date()).getTime();
+  score[difficulty][tm]=moves;
+  localStorage.setItem("score", JSON.stringify(score));
+  var scorelog=document.getElementById('scorelog');
+  var html='';
+  var keys=[];
+  for (var a in score[difficulty]) { keys.push(a) };
+  keys.sort(function(a,b){ return b-a; });
+  for (var a in keys)
+  {
+    if (score[difficulty].hasOwnProperty(keys[a]))
+    {
+      var dt=new Date(parseInt(keys[a]));
+      if ( keys[a]==tm ) { html+='<span class="today">'+dt.toLocaleString()+'<span style="float: right">'+score[difficulty][keys[a]]+'</span></span><br/>'; }
+      else { html+=dt.toLocaleString()+'<span style="float: right">'+score[difficulty][keys[a]]+'</span><br/>'; }
+    }
+  }
+  scorelog.innerHTML=html;
+  display_value('LANG_SCORE_NUM', moves);
+}
+
+function startup()
+{
+  right=localStorage.getItem("right");
+  if (right==null) { right=0; }
+  wrong=localStorage.getItem("wrong");
+  if (wrong==null) { wrong=0; }
+  total_right=localStorage.getItem("total_right");
+  if (total_right==null) { total_right=0; }
+  total_wrong=localStorage.getItem("total_wrong");
+  if (total_wrong==null) { total_wrong=0; }
+  localize();
+  display_value('moves', moves);
+  display_value('LANG_SCORE_NUM', moves);
+}
+
+function key(event) {
+  if ( !(event.which == 32) ) return true;
+  event.preventDefault();
+  display();
+  return false;
+}
+
+function touchstart(e)
+{
+  if (e.target.id.substring(0,6)=="answer")
+  {
+    if (e.target.nodeName!="DIV") { answer(e.target.parentElement); }
+    else { answer(e.target); }
+  }
+  e.preventDefault();
+}
+
+function congratulate()
+{
+  calculate_score();
+  document.getElementById('congratulation').style.display="block";
+}
+
+// m - array of m[1] = 1 and so on
+for (var i=0; i<field_length; i++) { m[i]=i; }
+
+var quest;
+for (var st=0; st<=(field_length/2)+1; st++)
+{
+  do { quest=Math.floor(Math.random()*(sanskr.length)); } while (quest_exists(quest)) // quest - index of unique random letter
+  var i=Math.floor(Math.random()*(m.length)); // array of empty fields, half of fields's length
+  field[m[i]]=quest;
+  field_shadow[m[i]]=0;
+  m.splice(i,1); // m[i] removed
+  i=Math.floor(Math.random()*(m.length));
+  field[m[i]]=quest;
+  field_shadow[m[i]]=1;
+  m.splice(i,1);
+}
+
+window.onkeypress=key;
+window.onload=startup;
+
+</script>
+<div id="header">sanskrit basics memory</div>
+<div id="answers">
+
+<script type="text/javascript" language="javascript">
+var i=0;
+while (i<field.length)
+{
+	if (variant == "simple") {
+	  document.write('<div id="answer' + i + '" class="answer click ' + difficulty + '" onclick="answer(this);"><span id="answer_span1">'+sanskr[field[i]]+'</span>');
+  	if ( annotate ) { document.write('<span id="answer_span2" class="not">'+latin[field[i]]+"</span>"); }
+	} else {
+		if (field_shadow[i] == 0) {
+			document.write('<div id="answer' + i + '" class="answer click ' + difficulty + '" onclick="answer(this);"><span id="answer_span1">'+sanskr[field[i]]+'</span>');
+			if ( annotate ) { document.write('<span id="answer_span2" class="not">'+latin[field[i]]+"</span>"); }
+		 } else {
+			document.write('<div id="answer' + i + '" class="answer click ' + difficulty + '" onclick="answer(this);"><span id="answer_span1" class="smaller">'+latin[field[i]]+'</span>');
+			// if ( annotate ) { document.write('<span id="answer_span2" class="not">'+sanskr[field[i]]+"</span>"); }
+		 }
+	}
+  document.write('</div>');
+  var el=document.getElementById('answer'+i);
+  el.addEventListener('touchstart',touchstart);
+  for (var a=0; a<el.childNodes.length; a++)
+  {
+    el.childNodes[a].addEventListener('touchstart',touchstart);
+  }
+  i++;
+}
+</script>
+</div>
+</div>
+<div id="moves_div"><span id="LANG_MOVES" onclick="NONOcongratulate();"></span><span id="moves"></span></div>
+<!-- div class="answer" onclick="congratulate();" style="width: auto;"><span id="LANG_MENUz"></span></div -->
+<div id="congratulation"><span id="LANG_CONGR"></span><span id="LANG_SCORE_TXT"></span><span id="LANG_SCORE_NUM"></span>
+<div id="scorelog"></div><a href="index.html"><span id="LANG_MENU" class="answer"></span></a><span id="LANG_AGAIN" class="answer" onclick="location.reload();"></span></div>
+</body>
+</html>
