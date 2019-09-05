@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ru-ru">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, target-densityDpi=device-dpi, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <link rel="stylesheet" type="text/css" href="resources/common.css">
+  <link rel="stylesheet" type="text/css" href="resources/index.css">
+</head>
+<body id="page" onunload="">
+<script type="text/javascript" language="javascript" src="resources/locale.js"></script>
+<script type="text/javascript" language="javascript">
+function startup()
+{
+  load_param('lang');
+  localize();
+}
+
+function load_param(parameter)
+{
+  var opts=document.getElementById(parameter).options;
+  var stored=localStorage.getItem(parameter);
+  if (!stored)
+  {
+    switch(parameter)
+    {
+      case 'lang'       : stored='en';     break;
+      case 'annotate'   : stored='yes';    break;
+      case 'difficulty' : stored='medium'; break;
+      default           : stored='';
+    }
+  }
+  for (var i in opts)
+  {
+    if (opts[i].value==stored)
+    {
+      document.getElementById(parameter).selectedIndex=opts[i].index; break;
+    }
+  }
+}
+
+function set_param(parameter)
+{
+  var select=document.getElementById(parameter);
+  var value=select.options[select.selectedIndex].value;
+  localStorage.setItem(parameter,value);
+}
+
+
+function open_variant(variant)
+{
+  localStorage.setItem('variant', variant);
+  window.open("tutorial.html",'_top');
+}
+
+function open_page(page)
+{
+  set_param('lang');
+  window.open(page+'.html','_top');
+}
+
+window.onload=startup;
+</script>
+<div id="main">
+<div id="name">Sanskrit Basics</br>Letters</div>
+<div id="answers">
+<div class="answer"><span id="LANG_LANG"></span><select id="lang" name="lang" onchange="set_param('lang'); localize();"><option value="en">English</option><option value="ru">Russian</option></select></div>
+<div class="answer click" onclick="open_page('scores');"><span id="LANG_SCORES"></span></div>
+<div class="answer click variant" onclick="open_variant('vowels');"><span id="LANG_VOWELS"></span></div>
+<div class="answer click variant" onclick="open_variant('vowels_rev');"><span id="LANG_VOWELS_REV"></span></div>
+<div class="answer click variant" onclick="open_variant('consonants');"><span id="LANG_CONSONANTS"></span></div>
+<div class="answer click variant" onclick="open_variant('consonants_rev');"><span id="LANG_CONSONANTS_REV"></span></div>
+</div>
+<div id="cpr_wrap">
+<div id="LANG_ABOUT" onclick="window.open('about:about');"></div>
+</div>
+</div>
+</body>
+</html>

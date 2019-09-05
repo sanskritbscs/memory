@@ -1,0 +1,46 @@
+.answer {
+  border: 1px solid rgb(178, 195, 255);
+  height: 5vh;
+  line-height: 5vh;
+  font-size: 3vh;
+  padding: 2px 8px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.7);
+  text-align: center;
+  margin: 2vh 1vh;
+  clear: both;
+  cursor: auto;
+  display: inline-block;
+  background-color: rgba(0,0,0,0.5);
+}
+
+#scorelog {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2vh;
+  text-align: left;
+  max-height: 64vh;
+  overflow-y: scroll;
+  padding-left: 2vh;
+  padding-right: 3vh;
+}
+
+.pressed {
+  background-color: rgba(0,0,0,0);
+  box-shadow: none;
+}
+
+#LANG_SCORES { font-size: 5vh; display: block; padding: 3vh 0 3vh 0; }
+
+#scores {
+  text-align: center;
+  border-radius: 5px;
+  height: 86vh;
+  margin-top: 10vh;
+}
+
+#scoresmain
+{
+  padding: 10px;
+}

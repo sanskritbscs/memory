@@ -1,0 +1,48 @@
+@media only screen and (min-width : 480px)
+{
+
+	#display {
+	  font-size: 140px;
+	  line-height: 220px;
+	}
+	.answer, #LANG_SCORE {
+	  font-size: 30px;
+	  line-height: 36px;
+	  height: 40px;
+	  padding: 10px;
+	  min-width: 65px;
+	}
+	#score {
+	  font-size: 14px;
+	}
+	#LANG_RESET {
+	  font-size: 12px;
+	}
+}
+
+@media only screen and (min-width : 600px)
+{
+
+	#display {
+	  font-size: 20vh;
+	  line-height: 28vh;
+	}
+	.answer, #LANG_SCORE {
+	  margin: .5vw;
+	  font-size: 30px;
+	  line-height: 5.5vh;
+	  height: 5.7vh;
+	  padding: 0;
+	  min-width: 65px;
+	  width: 22vw;
+	}
+	.answer { border: 2px solid rgb(178, 195, 255); }
+	#LANG_MENU, #LANG_SCORE { padding: 3vw;}
+	#score {
+	  font-size: 14px;
+	}
+	#LANG_RESET {
+	  font-size: 12px;
+	}
+}
+

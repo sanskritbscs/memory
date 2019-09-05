@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".AboutActivity">
+
+	<TextView
+		android:id="@+id/appText"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="32dp"
+		android:layout_marginEnd="8dp"
+		android:text="@string/app_full_name"
+		android:textColor="@color/sb_black"
+		android:textSize="30sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<TextView
+		android:id="@+id/textVersionText"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginEnd="4dp"
+		android:text="@string/version"
+		android:textColor="@color/sb_black"
+		android:textSize="12sp"
+		app:layout_constraintEnd_toStartOf="@+id/textVersion"
+		app:layout_constraintHorizontal_chainStyle="packed"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/appText" />
+
+	<TextView
+		android:id="@+id/textVersion"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="4dp"
+		android:layout_marginEnd="8dp"
+		android:text="TextView"
+		android:textColor="@color/sb_black"
+		android:textSize="12sp"
+		app:layout_constraintBottom_toBottomOf="@+id/textVersionText"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toEndOf="@+id/textVersionText"
+		app:layout_constraintTop_toTopOf="@+id/textVersionText" />
+
+	<TextView
+		android:id="@+id/textView"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginEnd="8dp"
+		android:lines="3"
+		android:text="@string/about_text"
+		android:textAlignment="center"
+		android:textColor="@color/sb_black"
+		android:textSize="18sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textVersionText" />
+
+	<View
+		android:id="@+id/divider1"
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginEnd="16dp"
+		android:background="?android:attr/listDivider"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/billing"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginEnd="8dp"
+		android:layout_marginBottom="8dp"
+		app:layout_constraintBottom_toTopOf="@+id/divider2"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/divider1">
+
+		<TextView
+			android:id="@+id/textDonate"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="8dp"
+			android:text="@string/about_donate"
+			android:textColor="@color/sb_black"
+			android:textSize="18sp"
+			app:layout_constraintBottom_toBottomOf="@+id/buttonBuy"
+			app:layout_constraintEnd_toStartOf="@+id/spinnerItems"
+			app:layout_constraintHorizontal_chainStyle="packed"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="@+id/buttonBuy" />
+
+		<Spinner
+			android:id="@+id/spinnerItems"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:gravity="end"
+			app:layout_constraintBottom_toBottomOf="@+id/buttonBuy"
+			app:layout_constraintEnd_toStartOf="@+id/buttonBuy"
+			app:layout_constraintHorizontal_chainStyle="packed"
+			app:layout_constraintStart_toEndOf="@+id/textDonate"
+			app:layout_constraintTop_toTopOf="@+id/buttonBuy" />
+
+		<Button
+			android:id="@+id/buttonBuy"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			android:layout_marginBottom="8dp"
+			android:text="@string/about_order"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@+id/spinnerItems"
+			app:layout_constraintTop_toTopOf="parent" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+	<View
+		android:id="@+id/divider2"
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:layout_marginStart="16dp"
+		android:layout_marginEnd="16dp"
+		android:background="?android:attr/listDivider"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/billing" />
+
+	<TextView
+		android:id="@+id/textVisit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginEnd="8dp"
+		android:text="@string/about_visit"
+		android:textAlignment="center"
+		android:textColor="@color/sb_black"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+	<TextView
+		android:id="@+id/textProjectUrl"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginEnd="8dp"
+		android:text="@string/github"
+		android:textAlignment="center"
+		android:textColor="@color/sb_black"
+		android:textColorLink="@color/sb_blue"
+		android:textSize="18sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textVisit" />
+
+	<View
+		android:id="@+id/divider3"
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginEnd="16dp"
+		android:background="?android:attr/listDivider"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textProjectUrl" />
+
+	<TextView
+		android:id="@+id/textOtherApps"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginEnd="8dp"
+		android:text="@string/about_other_apps"
+		android:textAlignment="center"
+		android:textColor="@color/sb_black"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.488"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+	<TextView
+		android:id="@+id/textPlayMarket"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginEnd="8dp"
+		android:text="@string/playmarket"
+		android:textAlignment="center"
+		android:textColor="@color/sb_black"
+		android:textColorLink="@color/sb_blue"
+		android:textSize="18sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textOtherApps" />
+
+	<TextView
+		android:id="@+id/textFDroid"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginEnd="8dp"
+		android:text="@string/about_fdroid"
+		android:textAlignment="center"
+		android:textColor="@color/sb_black"
+		android:textColorLink="@color/sb_blue"
+		android:textSize="18sp"
+		android:visibility="invisible"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textPlayMarket" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

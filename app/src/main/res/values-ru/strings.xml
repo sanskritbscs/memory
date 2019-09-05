@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Санскрит Буквы</string>
+	<string name="app_full_name">Санскрит Буквы</string>
+	<string name="github"><a href="https://github.com/sanskritbscs/letters">Sanskrit Basics Letters на GitHub</a></string>
+	<string name="playmarket"><a href="https://play.google.com/store/apps/developer?id=SanskritBscs">Play Market</a></string>
+	<string name="version">Версия:</string>
+	<string name="about_text">Пожалуйста, поддержите автора,\nесли это приложение\nоказалось полезным</string>
+	<string name="about_visit">Посетить сайт проекта</string>
+	<string name="about_other_apps">Попробуйте другие приложения</string>
+	<string name="about_fdroid">F-Droid</string>
+	<string name="about_order">Заказать</string>
+	<string name="about_donate">Поддержать</string>
+	<string name="about_services_unavailable">Сервисы Google Play Billing недоступны</string>
+	<string name="about_services_disconnected">Сервисы Google Play Billing недоступны\nПопробуйте еще раз позднее</string>
+	<string name="about_order_successful">Заказ успешно выполнен\nБлагодарю за поддержку!</string>
+	<string name="about_order_cancelled">Заказ отменен</string>
+	<string name="about_order_pending">Заказ данного элемента в состоянии ожидания\nПопробуйте еще раз позже или выберите другой элемент</string>
+	<string name="about_order_failed">Оформление заказа не удалось</string>
+</resources>
+

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ru-ru">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, target-densityDpi=device-dpi, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="resources/common.css">
+  <link rel="stylesheet" type="text/css" href="resources/tutorial.css">
+  <script type="text/javascript" language="javascript" src="resources/locale.js"></script>
+</head>
+<body id="page">
+<div id="main" class="grid-block">
+
+<script type="text/javascript" language="javascript">
+
+var answers;
+var questions;
+var special_font=false;
+var scale_font=false;
+var right_answer_goal=108;
+
+var variant=localStorage.getItem('variant');
+if (!variant) { variant='vowel'; }
+var lang=localStorage.getItem('lang');
+if (!lang) { lang='en'; }
+
+var task={};
+task['vowel']=[ "अ", "आ", "इ", "ई",  "उ", "ऊ",  "ऋ", "ॠ", "ऌ", "ए", "ऐ",  "ओ", "औ" ];
+task['consonant']=[ "क",  "ख",  "ग",  "घ",  "ङ",   "च",  "छ",  "ज",   "झ",   "ञ",   "ट",    "ठ",   "ड",   "ढ",   "ण",   "त",  "थ",   "द",  "ध",  "न",  "प",  "फ",   "ब", "भ",   "म",  "य", "र",  "ल",  "व",  "श",  "ष",   "स",  "ह" ];
+
+var ans={};
+ans['vowel']={};
+ans['consonant']={};
+
+ans['vowel']['ru']=[ "а", "аа", "и", "ии", "у",  "уу", "р",  "рр", "л", "е", "аи", "о",  "ау" ];
+ans['consonant']['ru']=[ "ка", "кха", "га", "гха", "нга", "ца", "ча", "джа", "джха", "нья", "тта",  "ттха", "дда", "ддха","нна", "та", "тха", "да", "дха", "на", "па", "пха", "ба", "бха", "ма", "я", "ра", "ла", "ва", "ша", "сса", "са", "ха" ];
+
+ans['vowel']['en']=[ "a", "aa", "i", "ii", "u",  "uu", "r",  "rr", "l", "e", "ai", "o",  "au" ];
+ans['consonant']['en']=[ "ka", "kha", "ga", "gha", "nga", "ca", "cha", "ja", "jha", "nya", "tta",  "ttha", "dda", "ddha","nna", "ta", "tha", "da", "dha", "na", "pa", "pha", "ba", "bha", "ma", "ya", "ra", "la", "va", "sha", "ssa", "sa", "ha" ];
+
+switch(variant)
+{
+  case "vowels_rev":
+    answers      =  task['vowel'];
+    questions    =  ans['vowel'][lang];
+    special_font = true;
+  break;
+  case "consonants":
+    questions    = task['consonant'];
+    answers      = ans['consonant'][lang];
+    scale_font   = true;
+  break;
+  case "consonants_rev":
+    answers      = task['consonant'];
+    questions    = ans['consonant'][lang];
+    special_font = true;
+  break;
+  default:
+    questions    = task['vowel'];
+    answers      = ans['vowel'][lang];
+    scale_font   = true;
+  break;
+}
+
+var score=localStorage.getItem('score');
+if (score) { score=JSON.parse(score); }
+  else { score={}; }
+if (!score[variant]) { score[variant]={}; }
+
+var right_answer;
+var right=0;
+var wrong=0;
+var first=true;
+var elem;
+
+
+function set_score()
+{
+  display_value("moves", wrong);
+  progress(right);
+  if (right==right_answer_goal) { congratulate(); }
+}
+
+function progress(p)
+{
+  var bar=document.getElementById('progress');
+  bar.style.width=100*p/right_answer_goal+'%';
+}
+
+function renew()
+{
+  while (true)
+  {
+    var r=Math.floor(Math.random()*(questions.length));
+    if ( r == right_answer ) { continue; }
+    right_answer=r;
+    break;
+  }
+}
+
+function display()
+{
+  if (!first)
+  {
+    reset(elem);
+  }
+  renew();
+  set_score();
+  display_value("display1", questions[right_answer]);
+  first=true;
+}
+
+function answer(ans,element)
+{
+  if (first)
+  {
+    elem=element;
+    if (ans==right_answer)
+    {
+      right++;
+      element.classList.add("right");
+    }
+    else
+    {
+      wrong++;
+      element.classList.add("wrong");
+      mark_right_answer();
+      first=false;
+      return;
+    }
+    setTimeout(function() { reset(elem); }, 500);
+  } else { reset(elem); }
+}
+
+function stackTrace() {
+    var err = new Error();
+    return err.stack;
+}
+
+function mark_right_answer()
+{
+  var el=document.getElementById("answer"+right_answer);
+  el.classList.add("right");
+}
+
+function unmark_right_answer()
+{
+  var el=document.getElementById("answer"+right_answer);
+  el.classList.remove("right");
+}
+
+function startup()
+{
+  localize();
+  if (special_font)
+  {
+    var ans=document.getElementById('answers');
+    ans.classList.add("special_font");
+    var dis=document.getElementById('display');
+    dis.style.fontFamily="inherit";
+  }
+  display();
+}
+
+function congratulate()
+{
+  calculate_score();
+  document.getElementById('congratulation').style.display="block";
+}
+
+function calculate_score()
+{
+  var tm=(new Date()).getTime();
+  score[variant][tm]=wrong;
+  localStorage.setItem("score", JSON.stringify(score));
+  var scorelog=document.getElementById('scorelog');
+  var html='';
+  var keys=[];
+  for (var a in score[variant]) { keys.push(a) };
+  keys.sort(function(a,b){ return b-a; });
+  for (var a in keys)
+  {
+    if (score[variant].hasOwnProperty(keys[a]))
+    {
+      var dt=new Date(parseInt(keys[a]));
+      if ( keys[a]==tm ) { html+='<span class="today">'+dt.toLocaleString()+'<span style="float: right">'+score[variant][keys[a]]+'</span></span><br/>'; }
+      else { html+=dt.toLocaleString()+'<span style="float: right">'+score[variant][keys[a]]+'</span><br/>'; }
+    }
+  }
+  scorelog.innerHTML=html;
+  display_value('LANG_SCORE_NUM', wrong);
+}
+
+function key(event) {
+  if ( !(event.which == 32) ) return true;
+  event.preventDefault();
+  display();
+  return false;
+}
+
+function reset(element)
+{
+  first=true;
+  element.classList.remove("wrong");
+  unmark_right_answer();
+  display();
+}
+
+function reset_current_score ()
+{
+  right=0;
+  wrong=0;
+  set_score();
+}
+
+function touchstart(e)
+{
+  answer(e.target.id.substring(6),e.target);
+  e.preventDefault();
+}
+
+window.onkeypress=key;
+window.onload=startup;
+
+</script>
+<div id="display" onclick="display();">
+<div id="display1"></div>
+<div id="display2"></div>
+</div>
+<div id="progress"></div>
+<div id="answers">
+<script type="text/javascript" language="javascript">
+var i=0;
+while (i<questions.length)
+{
+   document.write('<div id="answer' + i + '" class="answer click');
+   if ( scale_font ) { document.write(' scale_font'); }
+   document.write('" onclick="answer('+i+',this);">'+answers[i]+"</div>");
+   document.getElementById('answer'+i).addEventListener('touchstart',touchstart);
+   i++;
+}
+
+</script>
+</div>
+</div>
+<div id="moves_div"><span id="LANG_MOVES" onclick="NONOcongratulate();"></span><span id="moves"></span></div>
+<div id="congratulation"><span id="LANG_CONGR"></span><span id="LANG_SCORE_TXT"></span><span id="LANG_SCORE_NUM"></span><div id="scorelog"></div><a href="index.html"><span id="LANG_MENU" class="answer"></span></a><span id="LANG_AGAIN" class="answer" onclick="location.reload();"></span></div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ru-ru">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, target-densityDpi=device-dpi, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <link rel="stylesheet" type="text/css" href="resources/common.css">
+  <link rel="stylesheet" type="text/css" href="resources/scores.css">
+  <script type="text/javascript" language="javascript" src="resources/locale.js"></script>
+  <script type="text/javascript" language="javascript">
+
+  var difficulty=localStorage.getItem('variant');
+  if (!difficulty) { difficulty='consonants'; }
+  var score=localStorage.getItem('score');
+  if (score) { score=JSON.parse(score); }
+    else { score={}; }
+  if (!score[difficulty]) { score[difficulty]={}; }
+
+  function startup ()
+  {
+    localize();
+    show_score();
+  }
+
+  function mark_button(name,pressed)
+  {
+    var but=document.getElementById('LANG_'+name.toUpperCase());
+    if (!but) { return; }
+    if (pressed) { but.classList.add("pressed"); }
+      else { but.classList.remove("pressed"); }
+  }
+
+  function show_score(size)
+  {
+    if (!size) { size=difficulty; }
+    mark_button('consonants',false);
+    mark_button('consonants_rev',false);
+    mark_button('vowels',false);
+    mark_button('vowels_rev',false);
+    mark_button(size,true);
+    var scorelog=document.getElementById('scorelog');
+    var html='';
+    var keys=[];
+    for (var a in score[size]) { keys.push(a) };
+    keys.sort(function(a,b){ return b-a; });
+    for (var a in keys)
+    {
+      if (score[size].hasOwnProperty(keys[a]))
+      {
+        var dt=new Date(parseInt(keys[a]));
+        html+=dt.toLocaleString()+'<span style="float: right">'+score[size][keys[a]]+'</span><br/>';
+      }
+    }
+    scorelog.innerHTML=html;
+  }
+  window.onload=startup;
+  </script>
+</head>
+<body id="page">
+<div id="header">sanskrit basics letters</div>
+<div id="scoresmain">
+<div id="scores">
+
+
+<div id="LANG_SCORES"></div>
+
+<div id="answers">
+<div class="answer" id="LANG_CONSONANTS" onclick="show_score('consonants');"></div>
+<div class="answer" id="LANG_CONSONANTS_REV" onclick="show_score('consonants_rev');"></div>
+<div class="answer" id="LANG_VOWELS" onclick="show_score('vowels');"></div>
+<div class="answer" id="LANG_VOWELS_REV" onclick="show_score('vowels_rev');"></div>
+</div>
+
+<div id="scorelog">
+</div>
+
+</div>
+</div>
+</body>
+</html>

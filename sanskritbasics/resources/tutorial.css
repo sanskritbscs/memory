@@ -1,0 +1,166 @@
+@font-face {
+  font-family: "KituRitu"; 
+  src: url('KituRITU.ttf');
+}
+
+.answer {
+  display: inline-block;
+  border: 1px solid rgb(178, 195, 255);
+  height: 7vh;
+  margin: 2px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 5px;
+  background-color: rgba(0,0,0,0.7);
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.7);
+  width: 7vh;
+}
+
+.answer, #LANG_SCORE { font-size: 5vh; line-height: 7vh; }
+#LANG_SCORE { padding-right: 5px; }
+
+.click:active {
+  box-shadow: none;
+  position: relative;
+  top: +1px;
+}
+
+#main { margin-left: auto; margin-right: auto; text-align: center; padding: 10px; }
+.right { background-color: green; }
+.wrong { background-color: red; }
+#score_wrap { text-align: right; padding: 10; position: absolute; bottom: 0; width: 100%; }
+#score {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  background-color: rgba(0,0,0,0.7);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: none;
+  font-family: tahoma;
+  font-size: 2.5vh;
+  padding: 4px;
+  text-align: right;
+}
+
+#score_right, #score_wrong { display: inline; }
+
+#score TABLE { border-collapse: collapse; margin-left: auto; margin-right: 10px; }
+#score TABLE TR TD { padding: 0; }
+#display {
+  background-color: rgba(0,0,0,0.7);
+  font-size: 60px;
+  line-height: 110px;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  text-shadow: 0 0 5px #000000;
+  font-family: "KituRitu";
+  min-height: 110px;
+}
+
+#display1, #display2 { display: inline; }
+#display,.answer { 
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+#answers { margin-top: 10px; height: 40%; }
+#LANG_NOW, #LANG_TOTAL { padding-left: 5px; }
+#LANG_RESET { font-size: 8px; cursor: pointer; }
+
+.special_font { font-family: "KituRitu"; }
+.scale_font { font-size: 3vh; }
+
+#progress { height: 2vh; width:0; background-color: green; }
+
+#moves_div
+{
+  width: 95%;
+  text-align: right;
+  position: absolute;
+  bottom: 2vh;
+  right: 2vh;
+  font-size: 2.7vh;
+}
+
+#LANG_CONGR { font-size: 8vh; line-height:  18vh; display: block; }
+#LANG_SCORE_TXT, #LANG_SCORE_NUM { font-size: 5vh; display: block; }
+#LANG_MENU, #LANG_AGAIN { margin: 20px; padding: 2vh; margin-top: 4vh; font-size: 4vh; line-height: 4vh; height: 4vh; width: auto; }
+
+#congratulation
+{
+  top: 1%;
+  left: 2%;
+  position: absolute;
+  z-index: 5;
+  width: 96%;
+  height: 97%;
+  background-color: rgba(0, 0, 0, 0.9);
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  border: 1px solid rgb(178, 195, 255);
+  text-align: center;
+  display: none;
+}
+
+#scorelog { height: 44vh; }
+.today { color: red; }
+
+
+@media only screen and (min-width : 480px)
+{
+
+  #display {
+    font-size: 140px;
+    line-height: 220px;
+  }
+  .answer, #LANG_SCORE {
+    font-size: 30px;
+    line-height: 36px;
+    height: 40px;
+    padding: 10px;
+    min-width: 65px;
+  }
+  #score {
+    font-size: 14px;
+  }
+  #LANG_RESET {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (min-width : 600px)
+{
+
+  #display {
+    font-size: 20vh;
+    line-height: 28vh;
+  }
+  .answer, #LANG_SCORE {
+    margin: .5vw;
+    font-size: 30px;
+    line-height: 5.5vh;
+    height: 5.7vh;
+    padding: 0;
+    min-width: 65px;
+    width: 22vw;
+  }
+  .answer { border: 2px solid rgb(178, 195, 255); }
+  #LANG_MENU, #LANG_SCORE { padding: 3vw;}
+  #score {
+    font-size: 14px;
+  }
+  #LANG_RESET {
+    font-size: 12px;
+  }
+}
+

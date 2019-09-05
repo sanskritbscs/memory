@@ -1,0 +1,52 @@
+.answer {
+  border: 1px solid rgb(178, 195, 255);
+  height: 7vh;
+  font-size: 4vh;
+  padding: 1vh 20px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.7);
+  width: 80%;
+  text-align: center;
+  margin: 2vh auto;
+  clear: both;
+  cursor: auto;
+}
+
+#name {
+  font-size: 8vh;
+  line-height: 8vh;
+  font-family: 'Samarkan';
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  text-shadow: 0 0 5px #000000;
+  margin-bottom: 10px;
+}
+
+#main { padding: 10px; }
+
+SELECT { width: 20vh; font-size: 3vh; float: right; height: 5vh; margin: 1vh 0;}
+.answer SPAN { height: 7vh; line-height: 7vh;}
+
+#LANG_DIFF, #LANG_ANNOTATE, #LANG_LANG, #LANG_VARIANT { float: left; }
+#LANG_ABOUT {
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: none;
+  font-family: tahoma;
+  font-size: 2vh;
+  padding: 1vh 1.5vh;
+  font-size: 3vh;
+}
+
+#cpr_wrap { text-align: right; padding: 10; position: absolute; bottom: 0; width: 100%; left: 0; }
+
+.answer IMG { max-height: 30vh; max-width: 15vh; margin: 0 3vh; }
+
+.variant { width: 70%; }
+

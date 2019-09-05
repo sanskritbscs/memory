@@ -1,0 +1,59 @@
+* { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: none;}
+A, A:active, A:visited, A:link { text-decoration: none; color: white; }
+A { outline: 0; }
+body {
+  font-family: tahoma,arial,verdana,sans-serif,Lucida Sans;
+  font-size: 12px;
+  background: url('background.png') 100% 100% no-repeat; /*no-repeat center center fixed;*/
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: hidden;
+}
+html, body { height: 100%; padding: 0; color: #FFFFFF; margin: 0; }
+
+@font-face {
+  font-family: 'Samarkan';
+  src: url('Samarkan.ttf');
+}
+
+#score_wrap { text-align: right; padding: 10; position: absolute; bottom: 0; width: 100%; left: 0; }
+#score {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: none;
+  font-family: tahoma;
+  font-size: 2.5vh;
+  padding: 4px;
+  text-align: right;
+}
+
+#LANG_ABOUT, .answer, #name, #scores { background-color: rgba(0,0,0,0.7); }
+
+#header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  font-family: 'Samarkan';
+  font-size: 5vh;
+  text-shadow: 2px 2px 3px #000000;
+  text-align: center;
+}
+
+#main { text-align: center; }
+
+#scorelog {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2vh;
+  text-align: left;
+  max-height: 64vh;
+  overflow-y: scroll;
+  padding-left: 2vh;
+  padding-right: 3vh;
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">SanskritBasicsLetters</string>
+	<string name="app_full_name">Sanskrit Basics Letters</string>
+	<string name="github"><a href="https://github.com/sanskritbscs/letters">Sanskrit Basics Letters on GitHub</a></string>
+	<string name="playmarket"><a href="https://play.google.com/store/apps/developer?id=SanskritBscs">Play Market</a></string>
+	<string name="version">Version:</string>
+	<string name="about_text">If you like this application\nplease feel free\nto support the author</string>
+	<string name="about_visit">Visit project homepage</string>
+	<string name="about_other_apps">Check out other apps</string>
+	<string name="about_fdroid">F-Droid</string>
+	<string name="about_order">ORDER</string>
+	<string name="about_donate">Donate</string>
+	<string name="about_services_unavailable">Google Play Billing services unavailable</string>
+	<string name="about_services_disconnected">Google Play services initialization failed\nPlease try again later</string>
+	<string name="about_order_successful">Order successful\nThank you!</string>
+	<string name="about_order_cancelled">Order cancelled</string>
+	<string name="about_order_pending">Item order is in pending state\nTry again later or choose another item</string>
+	<string name="about_order_failed">Order failed</string>
+</resources>
+
