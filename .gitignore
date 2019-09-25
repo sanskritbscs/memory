@@ -6,6 +6,7 @@
 /captures
 .externalNativeBuild
 /app/build
+/app/play
 /app/app.iml
 app/release
 /files/Encryptor.class
