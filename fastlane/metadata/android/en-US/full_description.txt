@@ -1,1 +1,4 @@
-Learn Sanskrit letters and develop your alertness and memory at the same time.
+This application features simple memory game to help you to get familiar with Sanskrit letters.
+There are three field sizes, two variants, simple and hard level, where Sanskrit letter matches it's Latin variant.
+
+Supported languages English and Russian.
