@@ -8,8 +8,8 @@ android {
     applicationId "com.sanskritbasics"
     minSdkVersion 19
     targetSdkVersion 29
-    versionCode 19
-    versionName "2.5"
+    versionCode 20
+    versionName "2.6"
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
   }
   buildTypes {
