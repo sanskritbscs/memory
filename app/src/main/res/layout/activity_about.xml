@@ -40,7 +40,7 @@
 		android:layout_height="wrap_content"
 		android:layout_marginStart="4dp"
 		android:layout_marginEnd="8dp"
-		android:text="TextView"
+		android:text=""
 		android:textColor="@color/sb_black"
 		android:textSize="12sp"
 		app:layout_constraintBottom_toBottomOf="@+id/textVersionText"
@@ -106,6 +106,8 @@
 			android:id="@+id/spinnerItems"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:layout_marginStart="8dp"
+			android:layout_marginEnd="8dp"
 			android:gravity="end"
 			app:layout_constraintBottom_toBottomOf="@+id/buttonBuy"
 			app:layout_constraintEnd_toStartOf="@+id/buttonBuy"
@@ -117,6 +119,7 @@
 			android:id="@+id/buttonBuy"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:layout_marginStart="8dp"
 			android:layout_marginTop="8dp"
 			android:layout_marginBottom="8dp"
 			android:text="@string/about_order"
@@ -202,7 +205,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginStart="8dp"
-		android:layout_marginTop="8dp"
+		android:layout_marginTop="16dp"
 		android:layout_marginEnd="8dp"
 		android:text="@string/playmarket"
 		android:textAlignment="center"
@@ -213,20 +216,62 @@
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/textOtherApps" />
 
+	<View
+		android:id="@+id/divider4"
+		android:layout_width="140dp"
+		android:layout_height="1dp"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginEnd="16dp"
+		android:background="?android:attr/listDivider"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textPlayMarket" />
+
 	<TextView
 		android:id="@+id/textFDroid"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginStart="8dp"
+		android:layout_marginTop="16dp"
 		android:layout_marginEnd="8dp"
 		android:text="@string/about_fdroid"
 		android:textAlignment="center"
 		android:textColor="@color/sb_black"
 		android:textColorLink="@color/sb_blue"
 		android:textSize="18sp"
-		android:visibility="invisible"
+		android:visibility="visible"
 		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.498"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/textPlayMarket" />
+		app:layout_constraintTop_toBottomOf="@+id/divider4" />
+
+	<TextView
+		android:id="@+id/aboutFdroidLetters"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="8dp"
+		android:text="@string/fdroidletters"
+		android:textColor="@color/sb_black"
+		android:textColorLink="@color/sb_blue"
+		android:textSize="18sp"
+		android:visibility="gone"
+		app:layout_constraintEnd_toStartOf="@+id/aboutFdroidMemory"
+		app:layout_constraintHorizontal_chainStyle="packed"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textFDroid" />
+
+	<TextView
+		android:id="@+id/aboutFdroidMemory"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="8dp"
+		android:text="@string/fdroidmemory"
+		android:textColor="@color/sb_black"
+		android:textColorLink="@color/sb_blue"
+		android:textSize="18sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toEndOf="@+id/aboutFdroidLetters"
+		app:layout_constraintTop_toBottomOf="@+id/textFDroid" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
