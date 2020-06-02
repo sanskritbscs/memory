@@ -1,0 +1,5 @@
+Always wanted to learn Sanskrit, but didn't know what to start with?
+This program offers the ability to learn Sanskrit letters in a simple question-answer form.
+Try to get at least 108 right answers a day and soon you'll become familiar with Sanskrit letters.
+
+Supported languages: English, Russian.
