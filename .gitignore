@@ -8,5 +8,6 @@
 /app/build
 /app/app.iml
 app/release
+app/play/release
 /files/Encryptor.class
 /app/src/main/res/raw/sanskritbasics.zip
