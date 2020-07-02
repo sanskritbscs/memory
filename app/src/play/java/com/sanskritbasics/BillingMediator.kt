@@ -68,10 +68,12 @@ class BillingMediator :PurchasesUpdatedListener {
 //						Log.d("!!!!!!!!!!!!!!!", "Result is ${result.responseCode}")
 						if (result.responseCode == BillingClient.BillingResponseCode.OK) {
 //							Log.d("!!!!!!!!!!!!!!!", "Number in List: ${skuDetailsList.size}")
-							skuDetailsList.sortWith(compareBy{ it.sku })
-							itemsDescription = skuDetailsList
-							adapter = AboutSkuDetailsAdapter(context, itemsDescription)
-							func(true)
+							skuDetailsList?.let { sdl ->
+								sdl.sortWith(compareBy { it.sku })
+								itemsDescription = sdl
+								adapter = AboutSkuDetailsAdapter(context, itemsDescription)
+								func(true)
+							}
 						}
 					}
 				} else { func(false) }
@@ -82,8 +84,8 @@ class BillingMediator :PurchasesUpdatedListener {
 		})
 	}
 
-	override fun onPurchasesUpdated(billingResult: BillingResult?, purchases: MutableList<Purchase>?) {
-		when(billingResult?.responseCode) {
+	override fun onPurchasesUpdated(billingResult :BillingResult, purchases :MutableList<Purchase>?) {
+		when(billingResult.responseCode) {
 			BillingClient.BillingResponseCode.OK -> {
 				purchases?.let {
 					for (purchase in purchases) {
