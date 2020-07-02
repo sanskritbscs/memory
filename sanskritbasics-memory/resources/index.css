@@ -1,8 +1,8 @@
 .answer {
   border: 1px solid rgb(178, 195, 255);
   height: 7vh;
-  font-size: 4vh;
-  padding: 10px 20px;
+  font-size: 7vw;
+  padding: 1vh 20px;
   border-radius: 5px;
   box-shadow: 5px 5px 5px rgba(0,0,0,0.7);
   width: 80%;
@@ -13,7 +13,7 @@
 }
 
 #name {
-  font-size: 8vh;
+  font-size: 13vw;
   line-height: 8vh;
   font-family: 'Samarkan';
   text-align: center;
@@ -25,7 +25,7 @@
 
 #main { padding: 10px; }
 
-SELECT { width: 20vh; font-size: 3vh; float: right; height: 5vh; margin: 1vh 0;}
+SELECT { width: 35vw; font-size: 3vh; float: right; height: 5vh; margin: 1vh 0;}
 .answer SPAN { height: 7vh; line-height: 7vh;}
 
 #LANG_DIFF, #LANG_ANNOTATE, #LANG_LANG, #LANG_VARIANT { float: left; }
@@ -35,13 +35,12 @@ SELECT { width: 20vh; font-size: 3vh; float: right; height: 5vh; margin: 1vh 0;}
   margin-right: 10px;
   margin-bottom: 10px;
   white-space: nowrap;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   border-top: none;
   font-family: tahoma;
-  font-size: 2vh;
+  font-size: 5vw;
   padding: 1vh 1.5vh;
-  font-size: 3vh;
 }
 
 #cpr_wrap { text-align: right; padding: 10; position: absolute; bottom: 0; width: 100%; left: 0; }
