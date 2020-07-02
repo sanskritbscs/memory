@@ -13,6 +13,8 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.annotation.SuppressLint
+import android.content.res.Configuration
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.KeyEvent
@@ -117,5 +119,14 @@ class MainActivity : AppCompatActivity() {
 				startActivity(intent)
 				true
 		}	else {	view.loadUrl(url);	false	}
+	}
+
+	// fix crash on android 5.0
+	// https://stackoverflow.com/questions/58028821/
+	override fun applyOverrideConfiguration(overrideConfiguration :Configuration) {
+		if (Build.VERSION.SDK_INT in 21..22) {
+			return
+		}
+		super.applyOverrideConfiguration(overrideConfiguration)
 	}
 }
