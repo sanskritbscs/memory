@@ -8,7 +8,7 @@
 	<string name="about_text">If you like this application\nplease feel free\nto support the author</string>
 	<string name="about_visit">Visit project homepage</string>
 	<string name="about_other_apps">Check out other apps</string>
-	<string name="about_fdroid">F-Droid</string>
+	<string name="about_fdroid"><a href="https://f-droid.org/">F-Droid:</a></string>
 	<string name="about_order">ORDER</string>
 	<string name="about_donate">Donate</string>
 	<string name="about_services_unavailable">Google Play Billing services unavailable</string>
@@ -17,5 +17,7 @@
 	<string name="about_order_cancelled">Order cancelled</string>
 	<string name="about_order_pending">Item order is in pending state\nTry again later or choose another item</string>
 	<string name="about_order_failed">Order failed</string>
+	<string name="fdroidmemory"><a href="https://f-droid.org/en/packages/com.sanskritbasics.memory/">Memory</a></string>
+	<string name="fdroidletters"><a href="https://f-droid.org/en/packages/com.sanskritbasics/">Letters</a></string>
 </resources>
 
