@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
 		lWebView.settings.javaScriptEnabled = true
 		lWebView.settings.domStorageEnabled = true
 		lWebView.settings.setNeedInitialFocus(false)
+		lWebView.settings.textZoom = 100
 		lWebView.setBackgroundColor(Color.TRANSPARENT)
 		lWebView.webViewClient = if (android.os.Build.VERSION.SDK_INT < 24)
 			object :WebViewClient() {
