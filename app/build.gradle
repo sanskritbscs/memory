@@ -9,8 +9,8 @@ android {
     applicationId "com.sanskritbasics.memory"
     minSdkVersion 19
     targetSdkVersion 29
-    versionCode 22
-    versionName "2.8"
+    versionCode 23
+    versionName "2.9"
   }
   buildTypes {
     release {
