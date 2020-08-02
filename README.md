@@ -1,6 +1,6 @@
 # Sanskrit Basics Memory
 
-### Learn Sanskrit letters and develop your alertness and memory at the same time.
+### Learn Devanagari letters (used by Sanskrit and Hindi) and develop your alertness and memory at the same time.
 ---
 <p align="center">
   <a href="https://play.google.com/store/apps/details?id=com.sanskritbasics.memory">

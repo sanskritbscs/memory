@@ -1,4 +1,4 @@
-This application features simple memory game to help you to get familiar with Sanskrit letters.
-There are three field sizes, two variants, simple and hard level, where Sanskrit letter matches it's Latin variant.
+This application features simple memory game to help you to get familiar with Devanagari letters, used by Sanskrit and Hindi.
+There are three field sizes, two variants, simple and hard level, where Devanagari letter matches it's Latin variant.
 
 Supported languages English and Russian.
