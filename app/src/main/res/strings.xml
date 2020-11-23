@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Memory</string>
+	<string name="app_full_name">梵文基础记忆</string>
+	<string name="github"><a href="https://github.com/sanskritbscs/memory">GitHub上的Sanskrit Basics Memory</a></string>
+	<string name="playmarket"><a href="https://play.google.com/store/apps/developer?id=SanskritBscs">谷歌Play市场</a></string>
+	<string name="version">版本号:</string>
+	<string name="about_text">如果你喜欢这个应用程序\n请随意\n支持作者</string>
+	<string name="about_visit">访问项目主页</string>
+	<string name="about_other_apps">查看其它应用程序</string>
+	<string name="about_fdroid"><a href="https://f-droid.org/">F-Droid:</a></string>
+	<string name="about_order">订购</string>
+	<string name="about_donate">捐赠</string>
+	<string name="about_services_unavailable">Google Play 结算服务不可用</string>
+	<string name="about_services_disconnected">Google Play 服务初始化失败\n请稍候再试</string>
+	<string name="about_order_successful">订购成功\n谢谢你!</string>
+	<string name="about_order_cancelled">订购已取消</string>
+	<string name="about_order_pending">项目订单处于挂起状态\n稍后再试或选择另一个项目</string>
+	<string name="about_order_failed">订购失败</string>
+	<string name="fdroidmemory"><a href="https://f-droid.org/en/packages/com.sanskritbasics.memory/">Memory</a></string>
+	<string name="fdroidletters"><a href="https://f-droid.org/en/packages/com.sanskritbasics/">Letters</a></string>
+</resources>
+
