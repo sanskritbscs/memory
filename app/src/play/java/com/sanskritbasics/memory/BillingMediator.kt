@@ -114,7 +114,7 @@ class BillingMediator :PurchasesUpdatedListener {
 				Snackbar.make(snackView, R.string.about_order_failed, Snackbar.LENGTH_LONG).show()
 				Log.d("BILLING", "order unsuccessful")
 			}
-			else -> { Log.d("BILLING", "SOME ERROR OCCURRED: ${billingResult?.responseCode}") }
+			else -> { Log.d("BILLING", "SOME ERROR OCCURRED: ${billingResult.responseCode}") }
 		}
 	}
 
