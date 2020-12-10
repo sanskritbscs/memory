@@ -17,9 +17,11 @@ class AboutActivity :AppCompatActivity() {
 		this.supportActionBar?.hide()
 		setContentView(R.layout.activity_about)
 
-		textProjectUrl.movementMethod = LinkMovementMethod.getInstance()
-		textPlayMarket.movementMethod = LinkMovementMethod.getInstance()
-		textFDroid    .movementMethod = LinkMovementMethod.getInstance()
+		textProjectUrl    .movementMethod = LinkMovementMethod.getInstance()
+		textPlayMarket    .movementMethod = LinkMovementMethod.getInstance()
+		textFDroid        .movementMethod = LinkMovementMethod.getInstance()
+		aboutFdroidLetters.movementMethod = LinkMovementMethod.getInstance()
+		aboutFdroidMemory .movementMethod = LinkMovementMethod.getInstance()
 
 		val info :PackageInfo? = packageManager.getPackageInfo(packageName, 0)
 		@Suppress("DEPRECATION") val version = "${info?.versionName} (${info?.versionCode})"
