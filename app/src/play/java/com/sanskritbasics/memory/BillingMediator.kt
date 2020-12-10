@@ -23,7 +23,7 @@ class BillingMediator :PurchasesUpdatedListener {
 		private val layoutInflater = LayoutInflater.from(context)
 
 		override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-			val view  = convertView ?: layoutInflater.inflate(R.layout.support_simple_spinner_dropdown_item, parent)
+			val view  = convertView ?: layoutInflater.inflate(R.layout.support_simple_spinner_dropdown_item, null)
 			val text  = view.findViewById<TextView>(android.R.id.text1)
 			text.text = items[position].description
 			text.setTextColor(ContextCompat.getColor(context, android.R.color.black))
