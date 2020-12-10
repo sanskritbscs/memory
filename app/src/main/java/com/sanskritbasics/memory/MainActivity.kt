@@ -7,10 +7,8 @@ import java.io.FileOutputStream
 import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
 
-import android.annotation.TargetApi
 import android.content.Intent
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import android.annotation.SuppressLint
 import android.content.res.Configuration
@@ -40,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 		lWebView.settings.setNeedInitialFocus(false)
 		lWebView.settings.textZoom = 100
 		lWebView.setBackgroundColor(Color.TRANSPARENT)
-		lWebView.webViewClient = if (android.os.Build.VERSION.SDK_INT < 24)
+		lWebView.webViewClient = if (Build.VERSION.SDK_INT < 24)
 			object :WebViewClient() {
 				override fun shouldOverrideUrlLoading(view: WebView, url: String?) :Boolean
 				{ return processUrl(view, url) }

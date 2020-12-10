@@ -17,5 +17,7 @@
 	<string name="about_order_cancelled">Заказ отменен</string>
 	<string name="about_order_pending">Заказ данного элемента в состоянии ожидания\nПопробуйте еще раз позже или выберите другой элемент</string>
 	<string name="about_order_failed">Оформление заказа не удалось</string>
+	<string name="fdroidmemory"><a href="https://f-droid.org/en/packages/com.sanskritbasics.memory/">Memory</a></string>
+	<string name="fdroidletters"><a href="https://f-droid.org/en/packages/com.sanskritbasics/">Letters</a></string>
 </resources>
 
