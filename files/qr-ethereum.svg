@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg version="1.1" baseProfile="full"  width="296" height="296" viewBox="0 0 296 296"
-		 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-<desc></desc>
-<rect width="296" height="296" fill="#ffffff" cx="0" cy="0" />
+		 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect width="296" height="296" fill="#ffffff" />
 <defs>
 <rect id="p" width="8" height="8" />
 </defs>
