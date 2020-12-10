@@ -9,8 +9,8 @@ android {
     applicationId "com.sanskritbasics.memory"
     minSdkVersion 19
     targetSdkVersion 30
-    versionCode 23
-    versionName "2.9"
+    versionCode 25
+    versionName "3.0"
   }
   buildTypes {
     release {
@@ -55,8 +55,8 @@ dependencies {
 }
 
 task createZip(type: Zip) {
-  archiveName = "sanskritbasics.zip"
-  destinationDir = file('src/main/res/raw')
+  archiveBaseName = "sanskritbasics"
+  destinationDirectory = file('src/main/res/raw')
   from(files('../sanskritbasics-memory'))
 }
 
@@ -69,4 +69,3 @@ preBuild.dependsOn createZip
 repositories {
   mavenCentral()
 }
-
