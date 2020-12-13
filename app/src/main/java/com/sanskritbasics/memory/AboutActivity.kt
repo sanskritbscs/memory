@@ -31,9 +31,10 @@ class AboutActivity :AppCompatActivity() {
 		billingClient.init {
 			if (it) {
 				spinnerItems.adapter = billingClient.getAdapter()
+				buttonBuy.isEnabled = true
+				buttonBuy.setText(R.string.about_order)
+				spinnerItems.isEnabled = true
 			} else {
-				buttonBuy.isEnabled = false
-				spinnerItems.isEnabled = false
 				billing.visibility = View.GONE
 				Snackbar.make(textFDroid, R.string.about_services_unavailable, Snackbar.LENGTH_LONG).show()
 			}

@@ -10,6 +10,7 @@
 	<string name="about_other_apps">Попробуйте другие приложения</string>
 	<string name="about_fdroid">F-Droid</string>
 	<string name="about_order">Заказать</string>
+  <string name="about_loading">Загрузка...</string>
 	<string name="about_donate">Поддержать</string>
 	<string name="about_services_unavailable">Сервисы Google Play Billing недоступны</string>
 	<string name="about_services_disconnected">Сервисы Google Play Billing недоступны\nПопробуйте еще раз позднее</string>
