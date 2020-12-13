@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity() {
 
 	fun processUrl(view :WebView, url :String?) :Boolean {
 		if (url == null) return false
-		return if (url.startsWith("about:about")) {
+		return if (url == "file://about/") {
 				val intent = Intent(this, AboutActivity::class.java)
 				startActivity(intent)
 				true
