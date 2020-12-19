@@ -17,9 +17,11 @@ class AboutActivity :AppCompatActivity() {
 		this.supportActionBar?.hide()
 		setContentView(R.layout.activity_about)
 
-		textProjectUrl.movementMethod = LinkMovementMethod.getInstance()
-		textPlayMarket.movementMethod = LinkMovementMethod.getInstance()
-		textFDroid    .movementMethod = LinkMovementMethod.getInstance()
+		textProjectUrl    .movementMethod = LinkMovementMethod.getInstance()
+		textPlayMarket    .movementMethod = LinkMovementMethod.getInstance()
+		textFDroid        .movementMethod = LinkMovementMethod.getInstance()
+		aboutFdroidLetters.movementMethod = LinkMovementMethod.getInstance()
+		aboutFdroidMemory .movementMethod = LinkMovementMethod.getInstance()
 
 		val info :PackageInfo? = packageManager.getPackageInfo(packageName, 0)
 		@Suppress("DEPRECATION") val version = "${info?.versionName} (${info?.versionCode})"
@@ -29,9 +31,10 @@ class AboutActivity :AppCompatActivity() {
 		billingClient.init {
 			if (it) {
 				spinnerItems.adapter = billingClient.getAdapter()
+				buttonBuy.isEnabled = true
+				buttonBuy.setText(R.string.about_order)
+				spinnerItems.isEnabled = true
 			} else {
-				buttonBuy.isEnabled = false
-				spinnerItems.isEnabled = false
 				billing.visibility = View.GONE
 				Snackbar.make(textFDroid, R.string.about_services_unavailable, Snackbar.LENGTH_LONG).show()
 			}

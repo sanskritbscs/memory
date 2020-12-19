@@ -7,10 +7,8 @@ import java.io.FileOutputStream
 import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
 
-import android.annotation.TargetApi
 import android.content.Intent
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import android.annotation.SuppressLint
 import android.content.res.Configuration
@@ -37,10 +35,11 @@ class MainActivity : AppCompatActivity() {
 		lWebView = findViewById(R.id.webView1)
 		lWebView.settings.javaScriptEnabled = true
 		lWebView.settings.domStorageEnabled = true
+		lWebView.settings.allowFileAccess   = true
 		lWebView.settings.setNeedInitialFocus(false)
 		lWebView.settings.textZoom = 100
 		lWebView.setBackgroundColor(Color.TRANSPARENT)
-		lWebView.webViewClient = if (android.os.Build.VERSION.SDK_INT < 24)
+		lWebView.webViewClient = if (Build.VERSION.SDK_INT < 24)
 			object :WebViewClient() {
 				override fun shouldOverrideUrlLoading(view: WebView, url: String?) :Boolean
 				{ return processUrl(view, url) }
@@ -115,7 +114,7 @@ class MainActivity : AppCompatActivity() {
 
 	fun processUrl(view :WebView, url :String?) :Boolean {
 		if (url == null) return false
-		return if (url.startsWith("about:about")) {
+		return if (url == "file://about/") {
 				val intent = Intent(this, AboutActivity::class.java)
 				startActivity(intent)
 				true

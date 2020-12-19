@@ -4,13 +4,13 @@ apply plugin: 'kotlin-android-extensions'
 
 
 android {
-  compileSdkVersion 29
+  compileSdkVersion 30
   defaultConfig {
     applicationId "com.sanskritbasics.memory"
     minSdkVersion 19
-    targetSdkVersion 29
-    versionCode 23
-    versionName "2.9"
+    targetSdkVersion 30
+    versionCode 25
+    versionName "3.0"
   }
   buildTypes {
     release {
@@ -47,16 +47,16 @@ android {
 
 dependencies {
   implementation fileTree(include: ['*.jar'], dir: 'libs')
-  implementation 'androidx.appcompat:appcompat:1.1.0'
-  implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-  implementation 'com.android.billingclient:billing:3.0.0'
-  implementation 'com.google.android.material:material:1.1.0'
-  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+  implementation 'androidx.appcompat:appcompat:1.2.0'
+  implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+  playImplementation 'com.android.billingclient:billing:3.0.2'
+  implementation 'com.google.android.material:material:1.2.1'
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 
 task createZip(type: Zip) {
-  archiveName = "sanskritbasics.zip"
-  destinationDir = file('src/main/res/raw')
+  archiveBaseName = "sanskritbasics"
+  destinationDirectory = file('src/main/res/raw')
   from(files('../sanskritbasics-memory'))
 }
 
@@ -69,4 +69,3 @@ preBuild.dependsOn createZip
 repositories {
   mavenCentral()
 }
-

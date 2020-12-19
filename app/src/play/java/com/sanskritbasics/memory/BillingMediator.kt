@@ -19,13 +19,11 @@ class BillingMediator :PurchasesUpdatedListener {
 	private lateinit var itemsDescription :MutableList<SkuDetails>
 	private lateinit var adapter :AboutSkuDetailsAdapter
 
-	val isAvailable = true
-
 	class AboutSkuDetailsAdapter(private val context :Context, private val items :List<SkuDetails>) : BaseAdapter() {
 		private val layoutInflater = LayoutInflater.from(context)
 
 		override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-			val view  = convertView ?: layoutInflater.inflate(R.layout.support_simple_spinner_dropdown_item,null)
+			val view  = convertView ?: layoutInflater.inflate(R.layout.support_simple_spinner_dropdown_item, null)
 			val text  = view.findViewById<TextView>(android.R.id.text1)
 			text.text = items[position].description
 			text.setTextColor(ContextCompat.getColor(context, android.R.color.black))
@@ -42,10 +40,8 @@ class BillingMediator :PurchasesUpdatedListener {
 		override fun getItemId(position: Int) :Long            { return position.toLong() }
 		override fun getItem  (position: Int) :SkuDetails { return items[position]    }
 
-		fun getSkuDetails(position: Int) :SkuDetails? { return if (items.size > 0) items[position] else null }
+		fun getSkuDetails(position: Int) :SkuDetails? { return if (items.isNotEmpty()) items[position] else null }
 	}
-
-
 
 	fun setParams(cont :Context, view :View) {
 		context = cont
@@ -114,7 +110,7 @@ class BillingMediator :PurchasesUpdatedListener {
 				Snackbar.make(snackView, R.string.about_order_failed, Snackbar.LENGTH_LONG).show()
 				Log.d("BILLING", "order unsuccessful")
 			}
-			else -> { Log.d("BILLING", "SOME ERROR OCCURRED: ${billingResult?.responseCode}") }
+			else -> { Log.d("BILLING", "SOME ERROR OCCURRED: ${billingResult.responseCode}") }
 		}
 	}
 

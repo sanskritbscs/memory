@@ -10,6 +10,7 @@
 	<string name="about_other_apps">Check out other apps</string>
 	<string name="about_fdroid"><a href="https://f-droid.org/">F-Droid:</a></string>
 	<string name="about_order">ORDER</string>
+	<string name="about_loading">Loading...</string>
 	<string name="about_donate">Donate</string>
 	<string name="about_services_unavailable">Google Play Billing services unavailable</string>
 	<string name="about_services_disconnected">Google Play services initialization failed\nPlease try again later</string>
