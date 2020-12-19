@@ -10,8 +10,8 @@
 	<string name="about_other_apps">查看其它应用程序</string>
 	<string name="about_fdroid"><a href="https://f-droid.org/">F-Droid:</a></string>
 	<string name="about_order">订购</string>
-	<string name="about_donate">捐赠</string>
 	<string name="about_loading">加载中......</string>
+	<string name="about_donate">捐赠</string>
 	<string name="about_services_unavailable">Google Play 结算服务不可用</string>
 	<string name="about_services_disconnected">Google Play 服务初始化失败\n请稍候再试</string>
 	<string name="about_order_successful">订购成功\n谢谢你!</string>
