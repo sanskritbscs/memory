@@ -1,7 +1,7 @@
 .answer {
   border: 1px solid rgb(178, 195, 255);
   height: 7vh;
-  font-size: 7vw;
+  font-size: 6vw;
   padding: 1vh 20px;
   border-radius: 5px;
   box-shadow: 5px 5px 5px rgba(0,0,0,0.7);
@@ -10,6 +10,7 @@
   margin: 2vh auto;
   clear: both;
   cursor: auto;
+  white-space: nowrap;
 }
 
 #name {
