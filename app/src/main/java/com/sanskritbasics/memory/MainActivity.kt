@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
 		lWebView.setBackgroundColor(Color.TRANSPARENT)
 		lWebView.webViewClient = if (Build.VERSION.SDK_INT < 24)
 			object :WebViewClient() {
+				@Deprecated("Deprecated in Java", ReplaceWith("processUrl(view, url)"))
 				override fun shouldOverrideUrlLoading(view: WebView, url: String?) :Boolean
 				{ return processUrl(view, url) }
 			}
