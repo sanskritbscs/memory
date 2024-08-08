@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 		val pm = packageManager
 		var updateTime = java.lang.Long.MAX_VALUE
 		try {
-			val pi = pm.getPackageInfo("com.sanskritbasics.memory", 0)
+			@Suppress("DEPRECATION") val pi = pm.getPackageInfo("com.sanskritbasics.memory", 0)
 			updateTime = pi.lastUpdateTime
 		} catch (ignored: Exception) {}
 

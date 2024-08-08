@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-android-extensions'
 
 android {
-  compileSdkVersion 33
+  compileSdkVersion 34
   defaultConfig {
     applicationId "com.sanskritbasics.memory"
-    minSdkVersion 19
-    targetSdkVersion 33
-    versionCode 33
-    versionName "3.3"
+    minSdkVersion 21
+    targetSdkVersion 34
+    versionCode 34
+    versionName "3.4"
     setProperty("archivesBaseName","${applicationId}-v${versionName}")
   }
   buildTypes {
@@ -17,6 +17,16 @@ android {
       minifyEnabled true
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
     }
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+  kotlinOptions {
+    jvmTarget = JavaVersion.VERSION_1_8.toString()
+  }
+  buildFeatures {
+    viewBinding true
   }
   flavorDimensions 'version'
   productFlavors {
@@ -41,12 +51,12 @@ android {
 
 dependencies {
   implementation fileTree(include: ['*.jar'], dir: 'libs')
-  implementation "androidx.appcompat:appcompat:1.5.1"
+  implementation "androidx.appcompat:appcompat:1.7.0"
   implementation "androidx.constraintlayout:constraintlayout:2.1.4"
-  implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
-  implementation "com.google.android.material:material:1.7.0"
+  implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.8.4"
+  implementation "com.google.android.material:material:1.12.0"
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-  playImplementation "com.android.billingclient:billing-ktx:5.1.0"
+  playImplementation "com.android.billingclient:billing-ktx:7.0.0"
 }
 
 task createZip(type: Zip) {

@@ -15,10 +15,12 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.android.billingclient.api.*
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_about.*
+import com.sanskritbasics.memory.databinding.ActivityAboutBinding
 import kotlinx.coroutines.launch
 
 class AboutActivity :AppCompatActivity(), BillingClientStateListener, PurchasesUpdatedListener {
+
+    private lateinit var bd: ActivityAboutBinding
 
 	class AboutProductDetailsAdapter(private val context : Context, private val items :List<ProductDetails>) : BaseAdapter() {
 		private val layoutInflater = LayoutInflater.from(context)
@@ -50,20 +52,21 @@ class AboutActivity :AppCompatActivity(), BillingClientStateListener, PurchasesU
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
+		bd = ActivityAboutBinding.inflate(layoutInflater)
+		setContentView(bd.root)
 		this.supportActionBar?.hide()
-		setContentView(R.layout.activity_about)
 
-		textProjectUrl    .movementMethod = LinkMovementMethod.getInstance()
-		textPlayMarket    .movementMethod = LinkMovementMethod.getInstance()
-		textFDroid        .movementMethod = LinkMovementMethod.getInstance()
-		aboutFdroidLetters.movementMethod = LinkMovementMethod.getInstance()
-		aboutFdroidMemory .movementMethod = LinkMovementMethod.getInstance()
+		bd.textProjectUrl    .movementMethod = LinkMovementMethod.getInstance()
+		bd.textPlayMarket    .movementMethod = LinkMovementMethod.getInstance()
+		bd.textFDroid        .movementMethod = LinkMovementMethod.getInstance()
+		bd.aboutFdroidLetters.movementMethod = LinkMovementMethod.getInstance()
+		bd.aboutFdroidMemory .movementMethod = LinkMovementMethod.getInstance()
 
 		@Suppress("DEPRECATION") val info :PackageInfo? = packageManager.getPackageInfo(packageName, 0)
 		@Suppress("DEPRECATION") val version = "${info?.versionName} (${info?.versionCode})"
-		textVersion.text = version
-		buttonBuy.setOnClickListener {
-			launchBillingFlow(spinnerItems.selectedItemPosition)
+		bd.textVersion.text = version
+		bd.buttonBuy.setOnClickListener {
+			launchBillingFlow(bd.spinnerItems.selectedItemPosition)
 		}
 		client = BillingClient.newBuilder(this).setListener(this).enablePendingPurchases().build()
 		client.startConnection(this)
@@ -71,7 +74,7 @@ class AboutActivity :AppCompatActivity(), BillingClientStateListener, PurchasesU
 
 	override fun onResume() {
 		super.onResume()
-		snackView = textFDroid
+		snackView = bd.textFDroid
 	}
 
 	override fun onBillingSetupFinished(billingResult: BillingResult) {
@@ -87,9 +90,9 @@ class AboutActivity :AppCompatActivity(), BillingClientStateListener, PurchasesU
 	}
 
 	private fun billingReady() {
-		spinnerItems.adapter = AboutProductDetailsAdapter(this, itemsDescription)
-		buttonBuy.isEnabled = true
-		buttonBuy.setText(R.string.about_order)
+		bd.spinnerItems.adapter = AboutProductDetailsAdapter(this, itemsDescription)
+		bd.buttonBuy.isEnabled = true
+		bd.buttonBuy.setText(R.string.about_order)
 	}
 
 	override fun onBillingServiceDisconnected() {
@@ -131,7 +134,7 @@ class AboutActivity :AppCompatActivity(), BillingClientStateListener, PurchasesU
 	}
 
 	private fun launchBillingFlow(selectedItemPosition :Int) {
-		val detail = (spinnerItems.adapter as AboutProductDetailsAdapter).getProductDetails(selectedItemPosition)
+		val detail = (bd.spinnerItems.adapter as AboutProductDetailsAdapter).getProductDetails(selectedItemPosition)
 		detail?.let {
 			val productDetailsParamsList = listOf(
 				BillingFlowParams.ProductDetailsParams.newBuilder()
